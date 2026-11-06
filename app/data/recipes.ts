@@ -1,43 +1,40 @@
 export type Recipe = {
   id: string;
   title: string;
-  emoji: string;
-  minutes: number;
-  difficulty: "Easy" | "Medium" | "Hard";
   cuisine: string;
+  prepTime: string;
+  difficulty: string;
+  image: string;
+  ingredients: string[];
+  steps: string[];
 };
 
 export const recipes: Recipe[] = [
   {
     id: "margherita-pizza",
     title: "Margherita Pizza",
-    emoji: "🍕",
-    minutes: 35,
-    difficulty: "Medium",
     cuisine: "Italian",
+    prepTime: "35 min",
+    difficulty: "Medium",
+    image: "🍕",
+    ingredients: [
+      "1 pizza dough ball",
+      "1/2 cup tomato sauce",
+      "125g fresh mozzarella",
+      "Fresh basil leaves",
+      "Olive oil, salt"
+    ],
+    steps: [
+      "Heat the oven as hot as it goes.",
+      "Stretch the dough and spread sauce.",
+      "Tear mozzarella over the top.",
+      "Bake 7 to 9 minutes until charred.",
+      "Finish with basil and salt."
+    ]
   },
-  {
-    id: "paneer-tikka",
-    title: "Paneer Tikka",
-    emoji: "🧆",
-    minutes: 25,
-    difficulty: "Easy",
-    cuisine: "Indian",
-  },
-  {
-    id: "cold-brew",
-    title: "Cold Brew Coffee",
-    emoji: "☕",
-    minutes: 10,
-    difficulty: "Easy",
-    cuisine: "Beverage",
-  },
-  {
-    id: "ramen-bowl",
-    title: "Shoyu Ramen",
-    emoji: "🍜",
-    minutes: 45,
-    difficulty: "Hard",
-    cuisine: "Japanese",
-  },
+  // Add ingredients and steps for all your other recipes here...
 ];
+
+export function getRecipe(id: string): Recipe | undefined {
+  return recipes.find((recipe) => recipe.id === id);
+}
